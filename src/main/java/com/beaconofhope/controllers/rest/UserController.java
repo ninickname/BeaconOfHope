@@ -1,14 +1,8 @@
 package com.beaconofhope.controllers.rest;
 
 import com.beaconofhope.models.User;
-import com.beaconofhope.models.Users;
 import com.beaconofhope.repositories.UserRepository;
-import com.beaconofhope.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,10 +21,9 @@ public class UserController {
     UserRepository userRepo;
 
     @RequestMapping("getUsers")
-    public Users getUsers(){
-        Users ret = new Users();
-        ret.users =userRepo.findAll();
-        return ret ;
+    public List<User> getUsers(){
+
+        return userRepo.findAll();
     }
 
 
