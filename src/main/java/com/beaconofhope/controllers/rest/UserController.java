@@ -1,6 +1,7 @@
 package com.beaconofhope.controllers.rest;
 
 import com.beaconofhope.models.User;
+import com.beaconofhope.models.Users;
 import com.beaconofhope.repositories.UserRepository;
 import com.beaconofhope.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,10 @@ public class UserController {
     UserRepository userRepo;
 
     @RequestMapping("getUsers")
-    public List<User> getUsers(){
-        return userRepo.findAll();
+    public Users getUsers(){
+        Users ret = new Users();
+        ret.users =userRepo.findAll();
+        return ret ;
     }
 
 
